@@ -1,4 +1,4 @@
-import { Province, District, Neighborhood } from "./interfaces";
+import { Province } from "./interfaces";
 import { readTurkeyLocationData } from "./data";
 
 export function getAllProvinces(): { name: string; apiId: number }[] {
@@ -25,4 +25,20 @@ export function getNeighborhoodsByDistrictApiId(
     }
   }
   return [];
+}
+
+export function getDistrictsByProvinceName(
+  provinceName: string
+): { name: string; apiId: number }[] {
+  const data: Province[] = readTurkeyLocationData();
+  const normalizedProvinceName = normalizeName(provinceName);
+  const province = data.find((p) => p.name === normalizedProvinceName);
+  return province?.districts.map(({ name, apiId }) => ({ name, apiId })) ?? [];
+}
+
+function normalizeName(name: string): string {
+  return (
+    name.charAt(0).toLocaleUpperCase("tr-TR") +
+    name.slice(1).toLocaleLowerCase("tr-TR")
+  );
 }
