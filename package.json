@@ -2,9 +2,11 @@
   "name": "turkey-location-data",
   "version": "1.0.0",
   "description": "Turkey province, district and neighborhood data ",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
