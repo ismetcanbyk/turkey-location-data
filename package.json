@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ismetcanbyk/turkey-location-data.git"
+    "url": "https://github.com/ismetcanbyk/turkey-location-data.git"
   },
   "keywords": [
     "turkey",
@@ -26,5 +26,12 @@
   "bugs": {
     "url": "https://github.com/ismetcanbyk/turkey-location-data/issues"
   },
-  "homepage": "https://github.com/ismetcanbyk/turkey-location-data#readme"
+  "homepage": "https://github.com/ismetcanbyk/turkey-location-data#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.4"
+  }
 }
