@@ -1,5 +1,5 @@
 import { Province } from "./interfaces";
-import { readTurkeyLocationData } from "./data";
+import { readTurkeyLocationData, readPlateCodes } from "./data";
 
 export function getAllProvinces(): { name: string; apiId: number }[] {
   const data: Province[] = readTurkeyLocationData();
@@ -41,4 +41,9 @@ function normalizeName(name: string): string {
     name.charAt(0).toLocaleUpperCase("tr-TR") +
     name.slice(1).toLocaleLowerCase("tr-TR")
   );
+}
+
+export function getProvinceNameByPlateCode(plateCode: number): string | null {
+  const plateCodeMap = readPlateCodes();
+  return plateCodeMap[plateCode] || null;
 }

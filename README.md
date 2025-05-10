@@ -1,119 +1,86 @@
-# Turkey Location Data
+# 🇹🇷 Turkey Location Data
 
-#### With this package, you can access the most up-to-date list of provinces, districts and neighborhoods in Turkey.
+[![NPM Version](https://img.shields.io/npm/v/turkey-location-data.svg)](https://www.npmjs.com/package/turkey-location-data)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 
-### Installation
+Access Turkey's location data including provinces, districts, neighborhoods, and plate codes with ease.
 
-To install the package, use npm:
+---
+
+## ✨ Features
+
+- 📍 Get all provinces with their API IDs
+- 🏘️ Get districts by province name or API ID
+- 🏡 Get neighborhoods by district API ID
+- 🚗 Get province name by plate code
+- ⚙️ Written in TypeScript
+- 🚀 Lightweight & fast
+
+---
+
+## 📦 Installation
 
 ```bash
 npm install turkey-location-data
 ```
 
-### Usage
+## 🔧 Usage
 
-Import the functions you need from the package:
+### 📍 Get All Provinces
 
-```javascript
-import {
-  getAllProvinces,
-  getDistrictsByProvinceApiId,
-  getNeighborhoodsByDistrictApiId,
-  getDistrictsByProvinceName,
-} from "turkey-location-data";
-```
+```ts
+import { getAllProvinces } from "turkey-location-data";
 
-<br>
-
-### Methods
-
-#### getAllProvinces
-
-Fetches all provinces with their `apiId`:
-
-```javascript
 const provinces = getAllProvinces();
-console.log(provinces);
+// Returns: [{ name: "İstanbul", apiId: 34 }, ...]
 ```
 
-##### Response
+### 🏘️ Get Districts by Province
 
-```javascript
-[
-  { name: 'Adana', apiId: 23 },
-  { name: 'Adıyaman', apiId: 24 },
-  { name: 'Afyonkarahisar', apiId: 25 },
-  ...
-];
+```ts
+import {
+  getDistrictsByProvinceName,
+  getDistrictsByProvinceApiId,
+} from "turkey-location-data";
+
+// By province name
+const districts = getDistrictsByProvinceName("İstanbul");
+// Returns: [{ name: "Kadıköy", apiId: 1234 }, ...]
+
+// By province API ID
+const districts2 = getDistrictsByProvinceApiId(34);
+// Returns: [{ name: "Kadıköy", apiId: 1234 }, ...]
 ```
 
-<br>
+### 🏡 Get Neighborhoods
 
-#### getDistrictsByProvinceApiId
+```ts
+import { getNeighborhoodsByDistrictApiId } from "turkey-location-data";
 
-Fetches districts based on the province's `apiId`:
-
-```javascript
-const districts = getDistrictsByProvinceApiId(23);
-console.log(districts);
+const neighborhoods = getNeighborhoodsByDistrictApiId(1234);
+// Returns: ["Caferağa", "Fenerbahçe", ...]
 ```
 
-##### Response
+### 🚗 Get Province by Plate Code
 
-```javascript
-[
-  { name: 'Aladağ', apiId: 104 },
-  { name: 'Ceyhan', apiId: 105 },
-  { name: 'Çukurova', apiId: 6113 },
-  ...
-];
+```ts
+import { getProvinceNameByPlateCode } from "turkey-location-data";
+
+const province = getProvinceNameByPlateCode(34); // "İstanbul"
 ```
 
-<br>
+## 📄 License
 
-#### getNeighborhoodsByDistrictApiId
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Fetches neighborhoods based on the district's `apiId`:
+---
 
-```javascript
-const neighborhoods = getNeighborhoodsByDistrictApiId(104);
-console.log(neighborhoods);
-```
+## 📧 Contact
 
-##### Response
+Feel free to contact me with any questions or suggestions.
 
-```javascript
-[
-  'Akören',    'Akpınar',       'Başpınar',
-  'Boztahta',  'Büyüksofulu',   'Ceritler',
-  ...
-];
-```
-
-<br>
-
-#### getDistrictsByProvinceName
-
-Fetches districts based on the province's `name`:
-
-```javascript
-const districts = getDistrictsByProvinceName("Adana");
-console.log(districts);
-```
-
-##### Response
-
-```javascript
-[
-  { name: 'Aladağ', apiId: 104 },
-  { name: 'Ceyhan', apiId: 105 },
-  { name: 'Çukurova', apiId: 6113 },
-    ...
-];
-```
-
-<br>
-
-## Contact
-
-### Feel free to contact me with any questions or suggestions.
+- 📧 Email: [ismetcanbyk@gmail.com](mailto:ismetcanbyk@gmail.com)
+- 💬 Instagram: [@ismetcanbyk](https://www.instagram.com/ismetcanbyk/)
+- 💬 LinkedIn: [ismetcanbyk](https://www.linkedin.com/in/ismetcanbyk/)
+- 💬 GitHub: [ismetcanbyk](https://github.com/ismetcanbyk)
